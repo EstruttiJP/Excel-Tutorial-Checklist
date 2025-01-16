@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Aprendizado de Excel</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/@fortawesome/fontawesome-free/js/all.js"></script>
+    <style>
+        .transition-max-height {
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const checkboxes = document.querySelectorAll("input[type='checkbox']");
+            checkboxes.forEach(checkbox => {
+                const id = checkbox.id;
+                const storedValue = localStorage.getItem(id);
+                if (storedValue) {
+                    checkbox.checked = JSON.parse(storedValue);
+                }
+
+                checkbox.addEventListener("change", function () {
+                    localStorage.setItem(id, checkbox.checked);
+                });
+            });
+        });
+
+        function toggleItem(id, iconId) {
+            const content = document.getElementById(id);
+            content.classList.toggle("hidden");
+            content.classList.toggle("mt-2");
+
+            if (content.classList.contains("hidden")) {
+                content.style.maxHeight = '0px';
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+
+            const icon = document.getElementById(iconId);
+            icon.classList.toggle("rotate-180");
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 p-8">
+    <div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Lista de Aprendizado de Excel</h1>
+        <ul class="space-y-4">
+            <li>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="item1" class="mr-2">
+                        <button class="font-bold text-blue-500 flex items-center"
+                            onclick="toggleItem('dropdown1', 'icon1')" data-target="dropdown1">
+                            Introdução ao Excel
+                            <i id="icon1" class="fas fa-chevron-down ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <ul id="dropdown1"
+                    class="ml-6 hidden transition-max-height max-h-0 overflow-hidden list-disc list-inside text-gray-500">
+                    <li class="mt-2">Conhecer a interface do Excel: guias, barras de ferramentas, áreas de trabalho</li>
+                    <li class="mb-5">Como criar, salvar e abrir uma planilha</li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/excel-launch-window-Excel-Tutorial.png" alt="Exemplo de painel Excel"
+                            class="rounded-lg shadow-lg">
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/NDxr2nCAKDE?si=X7NhGYLRgGWHw-8U"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/x57-APiTL0M?si=ramBaAsUVAOBzPbl"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="item2" class="mr-2">
+                        <button class="font-bold text-blue-500 flex items-center"
+                            onclick="toggleItem('dropdown2', 'icon2')" data-target="dropdown2">
+                            Manipulação de Dados
+                            <i id="icon2" class="fas fa-chevron-down ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <ul id="dropdown2"
+                    class="ml-6 hidden transition-max-height max-h-0 overflow-hidden list-disc list-inside text-gray-500">
+                    <li class="mt-2">Inserir e editar dados (textos, números, datas)</li>
+                    <li>Formatar células: fonte, cor de fundo, bordas, alinhamento</li>
+                    <li class="mb-5">Usar preenchimento automático</li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/slide_2.jpg" alt="Manipulação de Dados" class="rounded-lg shadow-lg">
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/waeYHr9l5tc?si=J5thKNJn1zo-lGm3"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="item3" class="mr-2">
+                        <button class="font-bold text-blue-500 flex items-center"
+                            onclick="toggleItem('dropdown3', 'icon3')" data-target="dropdown3">
+                            Fórmulas e Funções
+                            <i id="icon3" class="fas fa-chevron-down ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <ul id="dropdown3"
+                    class="ml-6 hidden transition-max-height max-h-0 overflow-hidden list-disc list-inside text-gray-500">
+                    <li class="mt-2">Introdução às fórmulas: como criá-las e editá-las</li>
+                    <li>Funções básicas: SOMA, MÉDIA, MÁXIMO, MÍNIMO, CONT.SE</li>
+                    <li class="mb-3">Referências de célula: relativas, absolutas e mistas</li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/slide_3.jpg" alt="Formulas" class="rounded-lg shadow-lg">
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/como-fazer-contas-no-excel.png" alt="Exemplo de como fazer contas no Excel"
+                            class="rounded-lg shadow-lg">
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/formulas-funcoes.png" alt="Exemplo de fórmulas e funções no Excel"
+                            class="rounded-lg shadow-lg">
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/slide_4.jpg" alt="Funções" class="rounded-lg shadow-lg">
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/slide_5.jpg" alt="Funções 2" class="rounded-lg shadow-lg">
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/yvcCGm-T4Ak?si=h7wBUeE6QiEZj5lW"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                            class="rounded-lg shadow-lg"></iframe>
+                    </li>
+                </ul>
+
+            </li>
+            <li>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="item4" class="mr-2">
+                        <button class="font-bold text-blue-500 flex items-center"
+                            onclick="toggleItem('dropdown4', 'icon4')" data-target="dropdown4">
+                            Formatação Condicional
+                            <i id="icon4" class="fas fa-chevron-down ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <ul id="dropdown4"
+                    class="ml-6 hidden transition-max-height max-h-0 overflow-hidden list-disc list-inside text-gray-500">
+                    <li class="mt-2 mb-5">Aplicar regras de formatação condicional para destacar dados importantes</li>
+                    <li class="flex justify-center my-2">
+                        <img src="assets/planilhas_formatacao_condicional.gif" alt="Formatação condicional"
+                            class="rounded-lg shadow-lg">
+                    </li>
+                    <li class="mt-2">
+                        <a href="https://support.microsoft.com/pt-br/office/pinte-uma-imagem-com-formata%C3%A7%C3%A3o-condicional-d1d92998-d8ed-4e05-9763-2fbc7ccc45a2"
+                            class="text-blue-500 hover:text-blue-700 underline font-semibold"
+                            target="_blank">Documentação oficial da Microsoft sobre Formatação Condicional</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="https://www.netbit.net.br/blog/formatacao-condicional/"
+                            class="text-blue-500 hover:text-blue-700 underline font-semibold" target="_blank">Site sobre
+                            formatação condicional</a>
+                    </li>
+                    <li class="mb-5">
+                        <a href="https://support.microsoft.com/pt-br/office/congelar-pain%C3%A9is-para-bloquear-linhas-e-colunas-dab2ffc9-020d-4026-8121-67dd25f2508f"
+                            class="text-blue-500 hover:text-blue-700 underline font-semibold"
+                            target="_blank">Documentação oficial da Microsoft sobre Congelar paineis</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="item5" class="mr-2">
+                        <button class="font-bold text-blue-500 flex items-center"
+                            onclick="toggleItem('dropdown5', 'icon5')" data-target="dropdown5">
+                            Manipulação de Tabelas
+                            <i id="icon5" class="fas fa-chevron-down ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <ul id="dropdown5"
+                    class="ml-6 hidden transition-max-height max-h-0 overflow-hidden list-disc list-inside text-gray-500">
+                    <li class="mt-2">Como criar e formatar tabelas</li>
+                    <li>Ordenar e filtrar dados</li>
+                    <li class="mb-5">Subtotais e totais automáticos</li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/slide_6.jpg" alt="Formatacao" class="rounded-lg shadow-lg">
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/slide_7.jpg" alt="Formatacao 2" class="rounded-lg shadow-lg">
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/slide_8.jpg" alt="Formatacao 3" class="rounded-lg shadow-lg">
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="item6" class="mr-2">
+                        <button class="font-bold text-blue-500 flex items-center"
+                            onclick="toggleItem('dropdown6', 'icon6')" data-target="dropdown6">
+                            Gráficos
+                            <i id="icon6" class="fas fa-chevron-down ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <ul id="dropdown6"
+                    class="ml-6 hidden transition-max-height max-h-0 overflow-hidden list-disc list-inside text-gray-500">
+                    <li class="mt-2">Tipos de gráficos e quando usá-los</li>
+                    <li>Como criar, personalizar e formatar gráficos</li>
+                    <li class="mb-2">
+                        <a href="https://support.microsoft.com/pt-br/office/criar-um-gr%C3%A1fico-do-in%C3%ADcio-ao-fim-0baf399e-dd61-4e18-8a73-b3fd5d5680c2"
+                            class="text-blue-500 hover:text-blue-700 underline font-semibold"
+                            target="_blank">Documentação oficial da Microsoft sobre Grafico</a>
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/xHwgs25loOQ?si=GDfilpY4S7SGY9Q2"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/slide_9.jpg" alt="Grafico" class="rounded-lg shadow-lg">
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/slide_10.jpg" alt="Grafico 2" class="rounded-lg shadow-lg">
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/slide_11.jpg" alt="Grafico 3" class="rounded-lg shadow-lg">
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/slide_12.jpg" alt="Grafico 4" class="rounded-lg shadow-lg">
+                    </li>
+                    <li class="flex justify-center mb-5">
+                        <img src="assets/slide_13.jpg" alt="Grafico 5" class="rounded-lg shadow-lg">
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="item7" class="mr-2">
+                        <button class="font-bold text-blue-500 flex items-center"
+                            onclick="toggleItem('dropdown7', 'icon7')" data-target="dropdown7">
+                            Impressão e Configuração da Página
+                            <i id="icon7" class="fas fa-chevron-down ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <ul id="dropdown7"
+                    class="ml-6 hidden transition-max-height max-h-0 overflow-hidden list-disc list-inside text-gray-500">
+                    <li class="mt-2">Configurar a impressão: margens, cabeçalhos/rodapés, área de impressão</li>
+                    <li class="mb-5">Visualizar a impressão</li>
+                    <li class="flex justify-center mb-5">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/Plk1EbQFeJI?si=KMI0NKUtXQ0Nq52a"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="item8" class="mr-2">
+                        <button class="font-bold text-blue-500 flex items-center"
+                            onclick="toggleItem('dropdown8', 'icon8')" data-target="dropdown8">
+                            Segurança e Proteção de Dados
+                            <i id="icon8" class="fas fa-chevron-down ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <ul id="dropdown8"
+                    class="ml-6 hidden transition-max-height max-h-0 overflow-hidden list-disc list-inside text-gray-500">
+                    <li class="mt-2">Proteger planilhas e pastas de trabalho com senhas</li>
+                    <li class="mb-2">Bloquear e desbloquear células</li>
+                    <li>
+                        <a href="https://support.microsoft.com/pt-br/office/proteger-um-arquivo-do-excel-7359d4ae-7213-4ac2-b058-f75e9311b599"
+                            class="text-blue-500 hover:text-blue-700 underline font-semibold"
+                            target="_blank">Documentação oficial da Microsoft sobre Segurança e Proteção de Dados</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="item9" class="mr-2">
+                        <button class="font-bold text-blue-500 flex items-center"
+                            onclick="toggleItem('dropdown9', 'icon9')" data-target="dropdown9">
+                            Truques e Dicas Úteis
+                            <i id="icon9" class="fas fa-chevron-down ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <ul id="dropdown9"
+                    class="ml-6 hidden transition-max-height max-h-0 overflow-hidden list-disc list-inside text-gray-500 space-y-2">
+                    <li>Use Atalhos de Teclado: Aprenda os atalhos de teclado mais comuns, como Ctrl+C para copiar,
+                        Ctrl+V para colar, Ctrl+Z para desfazer, e Ctrl+Shift+L para aplicar filtros.</li>
+                    <li>Preenchimento Automático: Use a alça de preenchimento para completar séries de dados, como dias
+                        da semana, meses ou números sequenciais.</li>
+                    <li>Congelar Painéis: Congele linhas e colunas para manter cabeçalhos visíveis enquanto rola pela
+                        planilha. Vá até a guia "Exibir" e selecione "Congelar Painéis".</li>
+                    <li>Nomear Intervalos: Dê nomes a intervalos de células para facilitar a referência em fórmulas. Vá
+                        até a guia "Fórmulas" e selecione "Definir Nome".</li>
+                    <li>Remover Duplicatas: Use a função "Remover Duplicatas" para limpar listas de dados. Vá até a guia
+                        "Dados" e selecione "Remover Duplicatas".</li>
+                    <li>Inserir Comentários: Adicione comentários às células para fornecer contexto ou explicações
+                        adicionais. Clique com o botão direito na célula e selecione "Inserir Comentário".</li>
+                    <li>Converter Texto em Colunas: Divida texto em colunas usando a função "Texto para Colunas".
+                        Selecione os dados, vá até a guia "Dados" e selecione "Texto para Colunas".</li>
+                    <li>Usar Tabelas Dinâmicas: Crie tabelas dinâmicas para resumir e analisar grandes conjuntos de
+                        dados. Vá até a guia "Inserir" e selecione "Tabela Dinâmica".</li>
+                    <li>Validação de Dados: Use a validação de dados para restringir o tipo de dados que podem ser
+                        inseridos em uma célula. Vá até a guia "Dados" e selecione "Validação de Dados".</li>
+                    <li>Tabelas vs Intervalos: Converta intervalos de dados em tabelas para facilitar a análise e a
+                        formatação. Vá até a guia "Inserir" e selecione "Tabela".</li>
+                </ul>
+            </li>
+            <li>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="item9" class="mr-2">
+                        <button class="font-bold text-blue-500 flex items-center"
+                            onclick="toggleItem('dropdown10', 'icon10')" data-target="dropdown9">
+                            Exercicios!!
+                            <i id="icon10" class="fas fa-chevron-down ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <ul id="dropdown10"
+                    class="ml-6 hidden transition-max-height max-h-0 overflow-hidden list-disc list-inside text-gray-500">
+                    <li class="mt-2 font-bold text-blue-500">1. Exercícios Básicos</li>
+                    <ul class="ml-6 space-y-2">
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio1_1" class="mr-2">
+                            <label for="exercicio1_1">Criar uma tabela com pelo menos 10 linhas e 3 colunas de dados
+                                fictícios.</label>
+                        </li>
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio1_2" class="mr-2">
+                            <label for="exercicio1_2">Formatar a tabela para que todas as células tenham bordas e o
+                                cabeçalho esteja em negrito.</label>
+                        </li>
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio1_3" class="mr-2">
+                            <label for="exercicio1_3">Usar a função SOMA para calcular o total de uma coluna de
+                                números.</label>
+                        </li>
+                    </ul>
+
+                    <li class="mt-2 font-bold text-blue-500">2. Manipulação de Dados</li>
+                    <ul class="ml-6 space-y-2">
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio2_1" class="mr-2">
+                            <label for="exercicio2_1">Inserir dados fictícios de 10 clientes, incluindo nome, idade e
+                                valor da compra.</label>
+                        </li>
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio2_2" class="mr-2">
+                            <label for="exercicio2_2">Usar a função MÉDIA para calcular a idade média dos
+                                clientes.</label>
+                        </li>
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio2_3" class="mr-2">
+                            <label for="exercicio2_3">Ordenar a tabela por valor da compra em ordem decrescente.</label>
+                        </li>
+                    </ul>
+
+                    <li class="mt-2 font-bold text-blue-500">3. Formatação Condicional</li>
+                    <ul class="ml-6 space-y-2">
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio3_1" class="mr-2">
+                            <label for="exercicio3_1">Aplicar formatação condicional para destacar valores acima de 100
+                                em vermelho.</label>
+                        </li>
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio3_2" class="mr-2">
+                            <label for="exercicio3_2">Marcar células duplicadas em uma lista de produtos.</label>
+                        </li>
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio3_3" class="mr-2">
+                            <label for="exercicio3_3">Usar a escala de cores para valores de vendas mensais.</label>
+                        </li>
+                    </ul>
+
+                    <li class="mt-2 font-bold text-blue-500">4. Gráficos</li>
+                    <ul class="ml-6 space-y-2">
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio4_1" class="mr-2">
+                            <label for="exercicio4_1">Criar um gráfico de barras para representar as vendas trimestrais
+                                de uma empresa fictícia.</label>
+                        </li>
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio4_2" class="mr-2">
+                            <label for="exercicio4_2">Personalizar o gráfico com título, rótulos de eixos e
+                                legenda.</label>
+                        </li>
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio4_3" class="mr-2">
+                            <label for="exercicio4_3">Adicionar uma linha de tendência ao gráfico.</label>
+                        </li>
+                    </ul>
+
+                    <li class="mt-2 font-bold text-blue-500">5. Tabelas Dinâmicas</li>
+                    <ul class="ml-6 space-y-2">
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio5_1" class="mr-2">
+                            <label for="exercicio5_1">Criar uma Tabela Dinâmica a partir de uma lista de vendas.</label>
+                        </li>
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio5_2" class="mr-2">
+                            <label for="exercicio5_2">Adicionar campos de valores e rótulos de linhas para analisar os
+                                dados.</label>
+                        </li>
+                        <li class="flex items-center mt-3">
+                            <input type="checkbox" id="exercicio5_3" class="mr-2">
+                            <label for="exercicio5_3">Filtrar a Tabela Dinâmica para mostrar apenas vendas acima de
+                                1000.</label>
+                        </li>
+                    </ul>
+                </ul>
+
+            </li>
+        </ul>
+    </div>
+    <div class="text-center py-4">
+        <a href="https://slideplayer.com.br/slide/354291/" target="_blank"
+            class="text-blue-500 hover:text-blue-700 underline font-semibold"> Agradecemos ao SlidePlayer pelos slides!
+            Confira o site original.
+        </a>
+    </div>
+</body>
+
+</html>
